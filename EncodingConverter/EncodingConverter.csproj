@@ -45,6 +45,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\ConvertProjectCommand.cs" />
     <Compile Include="Converter.cs" />
     <Compile Include="Dialogs\ChooseEncodingDialog.xaml.cs">
       <DependentUpon>ChooseEncodingDialog.xaml</DependentUpon>

@@ -20,6 +20,8 @@ namespace EncodingConverter
     /// </summary>
     internal sealed partial class PackageIds
     {
+        public const int ProjectRightClickGroup = 0x0003;
+        public const int ConvertProjectCommand = 0x0002;
         public const int FileRightClickGroup = 0x0001;
         public const int ConvertFileCommand = 0x0100;
     }
