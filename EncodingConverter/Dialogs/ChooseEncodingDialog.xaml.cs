@@ -14,7 +14,7 @@ public partial class ChooseEncodingDialog : DialogWindow {
     public ChooseEncodingDialog() {
         InitializeComponent();
         encodingsCombo.ItemsSource = Encoding.GetEncodings().Select(ei => $"{ei.DisplayName} ({ei.CodePage})");
-        encodingsCombo.SelectedIndex = 0;
+        encodingsCombo.SelectedIndex = encodingsCombo.Items.Count - 1;
     }
 
     public Encoding ChosenEncoding {
