@@ -8,6 +8,8 @@ jobs:
   build:
     name: VSIX
     runs-on: windows-latest
+    env:
+      NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
       - uses: actions/checkout@v4
         with:
