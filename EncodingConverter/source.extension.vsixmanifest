@@ -3,10 +3,11 @@
     <Metadata>
         <Identity Id="EncodingConverter.625f3018-1e5f-4b92-ad9c-08d2534b6021" Version="1.0" Language="en-US" Publisher="Bluehill" />
         <DisplayName>Encoding Converter</DisplayName>
-        <Description xml:space="preserve">A Visual Studio extension to convert encoding of multiple files</Description>
+        <Description xml:space="preserve">An extension that allows you to easily convert the encoding of multiple files.</Description>
+        <License>..\LICENSE.txt</License>
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Icon.png</PreviewImage>
-        <Tags>encoding</Tags>
+        <Tags>encoding, converter, unicode, utf-8, utf8</Tags>
         <Preview>true</Preview>
     </Metadata>
     <Installation>

@@ -21,6 +21,8 @@
     <Buttons>
       <Button guid="EncodingConverter" id="ConvertFileCommand" priority="0x0100" type="Button">
         <Parent guid="EncodingConverter" id="FileRightClickGroup" />
+        <Icon guid="ImageCatalogGuid" id="FileEncodingDialog" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
         <Strings>
           <ButtonText>Convert Encoding...</ButtonText>
           <LocCanonicalName>.EncodingConverter.ConvertFileCommand</LocCanonicalName>
@@ -28,6 +30,8 @@
       </Button>
       <Button guid="EncodingConverter" id="ConvertProjectCommand" priority="0x0100" type="Button">
         <Parent guid="EncodingConverter" id="ProjectRightClickGroup" />
+        <Icon guid="ImageCatalogGuid" id="FileEncodingDialog" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
         <Strings>
           <ButtonText>Convert Encoding...</ButtonText>
           <LocCanonicalName>.EncodingConverter.ConvertProjectCommand</LocCanonicalName>

@@ -9,10 +9,10 @@ namespace EncodingConverter
     {
         public const string Id = "EncodingConverter.625f3018-1e5f-4b92-ad9c-08d2534b6021";
         public const string Name = "Encoding Converter";
-        public const string Description = @"A Visual Studio extension to convert encoding of multiple files";
+        public const string Description = @"An extension that allows you to easily convert the encoding of multiple files.";
         public const string Language = "en-US";
         public const string Version = "1.0";
         public const string Author = "Bluehill";
-        public const string Tags = "encoding";
+        public const string Tags = "encoding, converter, unicode, utf-8, utf8";
     }
 }
