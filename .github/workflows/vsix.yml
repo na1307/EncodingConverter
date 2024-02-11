@@ -1,0 +1,37 @@
+name: VSIX
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: VSIX
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: MSBuild
+        uses: microsoft/setup-msbuild@v2
+        with:
+          msbuild-architecture: x64
+      - name: Increment VSIX version
+        id: vsix_version
+        uses: timheuer/vsix-version-stamp@v2
+        with:
+          manifest-file: EncodingConverter\source.extension.vsixmanifest
+          vsix-token-source-file: EncodingConverter\source.extension.cs
+      - name: Cache NuGet
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}\.nuget\packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }} #hash of project files
+          restore-keys: ${{ runner.os }}-nuget-
+      - name: Build
+        run: msbuild -r -p:Configuration=Release -p:DeployExtension=false
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }}.vsix
+          path: EncodingConverter/bin/**/*.vsix
