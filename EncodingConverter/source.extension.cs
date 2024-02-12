@@ -9,7 +9,7 @@ namespace EncodingConverter
     {
         public const string Id = "EncodingConverter.625f3018-1e5f-4b92-ad9c-08d2534b6021";
         public const string Name = "Encoding Converter";
-        public const string Description = @"An extension that allows you to easily convert the encoding of multiple files.";
+        public const string Description = @"An extension that allows you to easily convert the encoding of multiple files. (System Encoding / UTF-8 with / without BOM)";
         public const string Language = "en-US";
         public const string Version = "1.0.1";
         public const string Author = "Bluehill";
