@@ -50,6 +50,7 @@
     <Compile Include="Dialogs\ChooseEncodingDialog.xaml.cs">
       <DependentUpon>ChooseEncodingDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\ConvertFileCommand.cs" />
     <Compile Include="EncodingConverterPackage.cs" />
