@@ -8,10 +8,10 @@ namespace EncodingConverter;
 
 public static class Converter {
     public static async Task ConvertEncodingAsync(IEnumerable<FileInfo> files, Encoding newEncoding) {
-        FileInfo[] array = files.ToArray();
+        var array = files.ToArray();
 
         for (var i = 0; i < array.Length; i++) {
-            FileInfo file = array[i];
+            var file = array[i];
 
             if (!file.Exists) {
                 throw new FileNotFoundException("File Not Found!", file.FullName);

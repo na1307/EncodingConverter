@@ -19,7 +19,7 @@ public partial class ChooseEncodingDialog : DialogWindow {
 
     public Encoding ChosenEncoding {
         get {
-            Encoding e = Encoding.GetEncodings()[encodingsCombo.SelectedIndex].GetEncoding();
+            var e = Encoding.GetEncodings()[encodingsCombo.SelectedIndex].GetEncoding();
 
             return e.CodePage is utf8CodePage ? new UTF8Encoding(bomCheckBox.IsChecked.GetValueOrDefault()) : e;
         }
@@ -30,6 +30,6 @@ public partial class ChooseEncodingDialog : DialogWindow {
 
     private void encodingsCombo_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
         bomCheckBox.IsChecked = false;
-        bomCheckBox.Visibility = Encoding.GetEncodings()[encodingsCombo.SelectedIndex].GetEncoding().CodePage is utf8CodePage ? Visibility.Visible : Visibility.Hidden;
+        bomCheckBox.Visibility = Encoding.GetEncodings()[encodingsCombo.SelectedIndex].CodePage is utf8CodePage ? Visibility.Visible : Visibility.Hidden;
     }
 }

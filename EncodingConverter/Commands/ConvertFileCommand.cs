@@ -1,5 +1,4 @@
 ﻿using EnvDTE;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -16,8 +15,8 @@ internal sealed class ConvertFileCommand : BaseCommand<ConvertFileCommand> {
             return;
         }
 
-        var dte = (DTE)await Package.GetServiceAsync(typeof(DTE));
-        IEnumerable<FileInfo> items = dte.SelectedItems.Cast<SelectedItem>().Where(item => {
+        var dte = (await Package.GetServiceAsync(typeof(DTE)) as DTE) ?? throw new InvalidOperationException();
+        var items = dte.SelectedItems.Cast<SelectedItem>().Where(item => {
             ThreadHelper.ThrowIfNotOnUIThread();
             item.ProjectItem.Open();
             return item.ProjectItem.Document.Kind == Constants.vsDocumentKindText;

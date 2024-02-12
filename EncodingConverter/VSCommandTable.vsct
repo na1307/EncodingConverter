@@ -25,7 +25,7 @@
         <CommandFlag>IconIsMoniker</CommandFlag>
         <Strings>
           <ButtonText>Convert Encoding...</ButtonText>
-          <LocCanonicalName>.EncodingConverter.ConvertFileCommand</LocCanonicalName>
+          <LocCanonicalName>.EncodingConverter.ConvertFile</LocCanonicalName>
         </Strings>
       </Button>
       <Button guid="EncodingConverter" id="ConvertProjectCommand" priority="0x0100" type="Button">
@@ -34,7 +34,7 @@
         <CommandFlag>IconIsMoniker</CommandFlag>
         <Strings>
           <ButtonText>Convert Encoding...</ButtonText>
-          <LocCanonicalName>.EncodingConverter.ConvertProjectCommand</LocCanonicalName>
+          <LocCanonicalName>.EncodingConverter.ConvertProject</LocCanonicalName>
         </Strings>
       </Button>
     </Buttons>
