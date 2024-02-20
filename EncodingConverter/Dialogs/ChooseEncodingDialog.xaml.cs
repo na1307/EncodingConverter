@@ -7,10 +7,10 @@ namespace EncodingConverter;
 /// ChooseEncodingDialog.xaml에 대한 상호 작용 논리
 /// </summary>
 public partial class ChooseEncodingDialog {
+    //private const int utf8CodePage = 65001;
     private static readonly string[] encodings = ["System Encoding", "UTF-8 with BOM", "UTF-8 without BOM"];
     private static readonly UTF8Encoding utf8withBom = new(encoderShouldEmitUTF8Identifier: true);
     private static readonly UTF8Encoding utf8withoutBom = new(encoderShouldEmitUTF8Identifier: false);
-    //private const int utf8CodePage = 65001;
 
     public ChooseEncodingDialog() {
         InitializeComponent();
