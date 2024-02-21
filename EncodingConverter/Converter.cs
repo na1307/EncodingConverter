@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.VisualStudio;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,9 @@ public static class Converter {
             }
 
             await VS.StatusBar.ShowProgressAsync($"{i + 1}/{array.Length} file processed", i + 1, array.Length);
+
+            var pane = await OutputWindowPane.GetAsync(VSConstants.GUID_OutWindowGeneralPane);
+            await pane.WriteLineAsync($"EncodingConverter: {file.Name} processed ({i + 1}/{array.Length})");
         }
     }
 
@@ -54,7 +58,9 @@ public static class Converter {
         //////////// If the code reaches here, no BOM/signature was found, so now
         //////////// we need to 'taste' the file to see if can manually discover
         //////////// the encoding. A high taster value is desired for UTF-8
-        if (taster == 0 || taster > b.Length) taster = b.Length;    // Taster size can't be bigger than the filesize obviously.
+        if (taster == 0 || taster > b.Length) {
+            taster = b.Length;    // Taster size can't be bigger than the filesize obviously.
+        }
 
 
         // Some text files are encoded in UTF8, but have no BOM/signature. Hence
@@ -65,8 +71,8 @@ public static class Converter {
         // For the below, false positives should be exceedingly rare (and would
         // be either slightly malformed UTF-8 (which would suit our purposes
         // anyway) or 8-bit extended ASCII/UTF-16/32 at a vanishingly long shot).
-        int i = 0;
-        bool utf8 = false;
+        var i = 0;
+        var utf8 = false;
         while (i < taster - 4) {
             if (b[i] <= 0x7F) { i += 1; continue; }     // If all characters are below 0x80, then it is valid UTF8, but UTF8 is not 'required' (and therefore the text is more desirable to be treated as the default codepage of the computer). Hence, there's no "utf8 = true;" code unlike the next three checks.
             if (b[i] >= 0xC2 && b[i] < 0xE0 && b[i + 1] >= 0x80 && b[i + 1] < 0xC0) { i += 2; utf8 = true; continue; }
@@ -83,30 +89,48 @@ public static class Converter {
         // The next check is a heuristic attempt to detect UTF-16 without a BOM.
         // We simply look for zeroes in odd or even byte places, and if a certain
         // threshold is reached, the code is 'probably' UF-16.
-        double threshold = 0.1; // proportion of chars step 2 which must be zeroed to be diagnosed as utf-16. 0.1 = 10%
-        int count = 0;
-        for (int n = 0; n < taster; n += 2) if (b[n] == 0) count++;
+        var threshold = 0.1; // proportion of chars step 2 which must be zeroed to be diagnosed as utf-16. 0.1 = 10%
+        var count = 0;
+        for (var n = 0; n < taster; n += 2) {
+            if (b[n] == 0) {
+                count++;
+            }
+        }
+
         if (((double)count) / taster > threshold) { text = Encoding.BigEndianUnicode.GetString(b); return Encoding.BigEndianUnicode; }
         count = 0;
-        for (int n = 1; n < taster; n += 2) if (b[n] == 0) count++;
+        for (var n = 1; n < taster; n += 2) {
+            if (b[n] == 0) {
+                count++;
+            }
+        }
+
         if (((double)count) / taster > threshold) { text = Encoding.Unicode.GetString(b); return Encoding.Unicode; } // (little-endian)
 
 
         // Finally, a long shot - let's see if we can find "charset=xyz" or
         // "encoding=xyz" to identify the encoding:
-        for (int n = 0; n < taster - 9; n++) {
+        for (var n = 0; n < taster - 9; n++) {
             if (
                 ((b[n + 0] == 'c' || b[n + 0] == 'C') && (b[n + 1] == 'h' || b[n + 1] == 'H') && (b[n + 2] == 'a' || b[n + 2] == 'A') && (b[n + 3] == 'r' || b[n + 3] == 'R') && (b[n + 4] == 's' || b[n + 4] == 'S') && (b[n + 5] == 'e' || b[n + 5] == 'E') && (b[n + 6] == 't' || b[n + 6] == 'T') && (b[n + 7] == '=')) ||
                 ((b[n + 0] == 'e' || b[n + 0] == 'E') && (b[n + 1] == 'n' || b[n + 1] == 'N') && (b[n + 2] == 'c' || b[n + 2] == 'C') && (b[n + 3] == 'o' || b[n + 3] == 'O') && (b[n + 4] == 'd' || b[n + 4] == 'D') && (b[n + 5] == 'i' || b[n + 5] == 'I') && (b[n + 6] == 'n' || b[n + 6] == 'N') && (b[n + 7] == 'g' || b[n + 7] == 'G') && (b[n + 8] == '='))
                 ) {
-                if (b[n + 0] == 'c' || b[n + 0] == 'C') n += 8; else n += 9;
-                if (b[n] == '"' || b[n] == '\'') n++;
-                int oldn = n;
+                if (b[n + 0] == 'c' || b[n + 0] == 'C') {
+                    n += 8;
+                } else {
+                    n += 9;
+                }
+
+                if (b[n] == '"' || b[n] == '\'') {
+                    n++;
+                }
+
+                var oldn = n;
                 while (n < taster && (b[n] == '_' || b[n] == '-' || (b[n] >= '0' && b[n] <= '9') || (b[n] >= 'a' && b[n] <= 'z') || (b[n] >= 'A' && b[n] <= 'Z'))) { n++; }
-                byte[] nb = new byte[n - oldn];
+                var nb = new byte[n - oldn];
                 Array.Copy(b, oldn, nb, 0, n - oldn);
                 try {
-                    string internalEnc = Encoding.ASCII.GetString(nb);
+                    var internalEnc = Encoding.ASCII.GetString(nb);
                     text = Encoding.GetEncoding(internalEnc).GetString(b);
                     return Encoding.GetEncoding(internalEnc);
                 } catch { break; }    // If C# doesn't recognize the name of the encoding, break.

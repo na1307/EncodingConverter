@@ -11,7 +11,7 @@ namespace EncodingConverter
         public const string Name = "Encoding Converter";
         public const string Description = @"An extension that allows you to easily convert the encoding of multiple files. (System Encoding / UTF-8 with / without BOM)";
         public const string Language = "en-US";
-        public const string Version = "1.0.1";
+        public const string Version = "1.1";
         public const string Author = "Bluehill";
         public const string Tags = "encoding, converter, unicode, utf-8, utf8";
     }
