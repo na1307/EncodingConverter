@@ -9,9 +9,8 @@
              Height="150" Width="500" Title="Choose Encoding">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Choose Encoding:" VerticalAlignment="Top"/>
-        <ComboBox x:Name="encodingsCombo" HorizontalAlignment="Center" Margin="0,31,0,0" VerticalAlignment="Top" Width="480" SelectionChanged="encodingsCombo_SelectionChanged"/>
+        <ComboBox x:Name="encodingsCombo" HorizontalAlignment="Center" Margin="0,31,0,0" VerticalAlignment="Top" Width="480"/>
         <Button x:Name="okButton" Content="_OK" HorizontalAlignment="Right" Margin="0,0,90,10" VerticalAlignment="Bottom" Width="75" Height="25" IsDefault="True" Click="okButton_Click"/>
         <Button x:Name="cancelButton" Content="_Cancel" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Height="25" IsCancel="True" Click="cancelButton_Click"/>
-        <CheckBox x:Name="bomCheckBox" Content="With BOM" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top"/>
     </Grid>
 </pui:DialogWindow>

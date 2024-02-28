@@ -9,9 +9,9 @@ internal sealed class ConvertProjectCommand : BaseCommand<ConvertProjectCommand>
     protected override async Task ExecuteAsync(OleMenuCmdEventArgs e) {
         await Package.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-        ChooseEncodingDialog dialog = new();
+        var (result, encoding) = ChooseEncodingDialog.ShowDialogAndGetEncoding();
 
-        if (!dialog.ShowModal().GetValueOrDefault()) {
+        if (!result) {
             return;
         }
 
@@ -25,6 +25,6 @@ internal sealed class ConvertProjectCommand : BaseCommand<ConvertProjectCommand>
             return new FileInfo((string)item.Properties.Item("FullPath").Value);
         });
 
-        await Converter.ConvertEncodingAsync(items, dialog.ChosenEncoding);
+        await Converter.ConvertEncodingAsync(items, encoding);
     }
 }
