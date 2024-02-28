@@ -13,24 +13,31 @@ public static class Converter {
         for (var i = 0; i < array.Length; i++) {
             var file = array[i];
 
+            // If file not exists
             if (!file.Exists) {
                 throw new FileNotFoundException("File Not Found!", file.FullName);
             }
 
             string fullText;
 
+            // Read file
             using (StreamReader sr = new(file.FullName, detectTextEncoding(file.FullName, out _, 0))) {
                 fullText = await sr.ReadToEndAsync();
             }
 
+            // Write file as new encoding
             using (StreamWriter sw = new(file.FullName, false, newEncoding)) {
                 await sw.WriteAsync(fullText);
             }
 
-            await VS.StatusBar.ShowProgressAsync($"{i + 1}/{array.Length} file processed", i + 1, array.Length);
+            // Progress bar
+            var pbTask = VS.StatusBar.ShowProgressAsync($"{i + 1}/{array.Length} file processed", i + 1, array.Length);
 
+            // Print to Output window
             var pane = await OutputWindowPane.GetAsync(VSConstants.GUID_OutWindowGeneralPane);
-            await pane.WriteLineAsync($"EncodingConverter: {file.Name} processed ({i + 1}/{array.Length})");
+            var owTask = pane.WriteLineAsync($"EncodingConverter: {file.Name} processed ({i + 1}/{array.Length})");
+
+            await Task.WhenAll(pbTask, owTask);
         }
     }
 
