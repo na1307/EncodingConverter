@@ -31,9 +31,9 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }} #hash of project files
           restore-keys: ${{ runner.os }}-nuget-
       - name: Build
-        run: msbuild -r -p:Configuration=Release -p:DeployExtension=false
+        run: msbuild EncodingConverter.VS\EncodingConverter.VS.csproj -r -p:Configuration=Release -p:DeployExtension=false
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}.vsix
-          path: EncodingConverter/bin/**/*.vsix
+          path: EncodingConverter.VS/bin/Release/**/*.vsix
