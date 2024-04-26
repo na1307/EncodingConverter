@@ -106,7 +106,12 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\EncodingConverter\EncodingConverter.csproj">
+      <Project>{4787fd60-29a6-415e-bab9-0b909d0e9f8e}</Project>
+      <Name>EncodingConverter</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Dialogs\ChooseEncodingDialog.xaml">
       <SubType>Designer</SubType>

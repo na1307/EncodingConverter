@@ -1,4 +1,4 @@
 # Encoding Converter
-An extension that allows you to easily convert the encoding of multiple files(System Encoding / UTF-8 with / without BOM).
+Encoding Converter makes it easy to convert the encoding of a file.
 
-![Image](./image.png)
+Visual Studio Extension is avaliable.
