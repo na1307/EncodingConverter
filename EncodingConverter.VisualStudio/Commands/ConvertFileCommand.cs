@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace EncodingConverter;
+namespace EncodingConverter.VisualStudio;
 
 [Command(PackageIds.ConvertFileCommand)]
 internal sealed class ConvertFileCommand : BaseCommand<ConvertFileCommand> {

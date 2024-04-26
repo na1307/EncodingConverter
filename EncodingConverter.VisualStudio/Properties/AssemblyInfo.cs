@@ -1,4 +1,4 @@
-﻿using EncodingConverter;
+﻿using EncodingConverter.VisualStudio;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.InteropServices;

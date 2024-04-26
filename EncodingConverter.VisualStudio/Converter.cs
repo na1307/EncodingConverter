@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace EncodingConverter;
+namespace EncodingConverter.VisualStudio;
 
 public static class Converter {
     public static async Task ConvertEncodingAsync(IEnumerable<FileInfo> files, Encoding newEncoding) {

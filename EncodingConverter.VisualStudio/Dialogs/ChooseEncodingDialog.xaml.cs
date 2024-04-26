@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Windows;
 
-namespace EncodingConverter;
+namespace EncodingConverter.VisualStudio;
 
 /// <summary>
 /// ChooseEncodingDialog.xaml에 대한 상호 작용 논리

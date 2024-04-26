@@ -22,8 +22,8 @@ jobs:
         id: vsix_version
         uses: timheuer/vsix-version-stamp@v2
         with:
-          manifest-file: EncodingConverter.VS\source.extension.vsixmanifest
-          vsix-token-source-file: EncodingConverter.VS\source.extension.cs
+          manifest-file: EncodingConverter.VisualStudio\source.extension.vsixmanifest
+          vsix-token-source-file: EncodingConverter.VisualStudio\source.extension.cs
       - name: Cache NuGet
         uses: actions/cache@v4
         with:
@@ -31,9 +31,9 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }} #hash of project files
           restore-keys: ${{ runner.os }}-nuget-
       - name: Build
-        run: msbuild EncodingConverter.VS\EncodingConverter.VS.csproj -r -p:Configuration=Release -p:DeployExtension=false
+        run: msbuild EncodingConverter.VisualStudio\EncodingConverter.VisualStudio.csproj -r -p:Configuration=Release -p:DeployExtension=false
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}.vsix
-          path: EncodingConverter.VS/bin/Release/**/*.vsix
+          path: EncodingConverter.VisualStudio/bin/Release/**/*.vsix
