@@ -18,6 +18,11 @@ internal sealed class ConvertProjectCommand : BaseCommand<ConvertProjectCommand>
         var dte = (await Package.GetServiceAsync(typeof(DTE)) as DTE) ?? throw new InvalidOperationException();
         var items = dte.SelectedItems.Item(1).Project.ProjectItems.Cast<ProjectItem>().Where(item => {
             ThreadHelper.ThrowIfNotOnUIThread();
+
+            if (!item.Kind.Equals("{6bb5f8ee-4483-11d3-8bcf-00c04f8ec28c}", StringComparison.OrdinalIgnoreCase)) {
+                return false;
+            }
+
             item.Open();
             return item.Document.Kind == Constants.vsDocumentKindText;
         }).Select(item => {
