@@ -22,8 +22,8 @@ jobs:
         id: vsix_version
         uses: timheuer/vsix-version-stamp@v2
         with:
-          manifest-file: EncodingConverter\source.extension.vsixmanifest
-          vsix-token-source-file: EncodingConverter\source.extension.cs
+          manifest-file: EncodingConverter.VS\source.extension.vsixmanifest
+          vsix-token-source-file: EncodingConverter.VS\source.extension.cs
       - name: Cache NuGet
         uses: actions/cache@v4
         with:
