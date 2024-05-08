@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 
 namespace EncodingConverter;
 
@@ -39,14 +40,12 @@ public static class ConverterCore {
         else if (b.Length >= 3 && b[0] == 0xEF && b[1] == 0xBB && b[2] == 0xBF) { text = Encoding.UTF8.GetString(b, 3, b.Length - 3); return Encoding.UTF8; } // UTF-8
         else if (b.Length >= 3 && b[0] == 0x2b && b[1] == 0x2f && b[2] == 0x76) { text = Encoding.UTF7.GetString(b, 3, b.Length - 3); return Encoding.UTF7; } // UTF-7
 
-
         //////////// If the code reaches here, no BOM/signature was found, so now
         //////////// we need to 'taste' the file to see if can manually discover
         //////////// the encoding. A high taster value is desired for UTF-8
         if (taster == 0 || taster > b.Length) {
             taster = b.Length;    // Taster size can't be bigger than the filesize obviously.
         }
-
 
         // Some text files are encoded in UTF8, but have no BOM/signature. Hence
         // the below manually checks for a UTF8 pattern. This code is based off
@@ -70,7 +69,6 @@ public static class ConverterCore {
             return Encoding.UTF8;
         }
 
-
         // The next check is a heuristic attempt to detect UTF-16 without a BOM.
         // We simply look for zeroes in odd or even byte places, and if a certain
         // threshold is reached, the code is 'probably' UF-16.
@@ -91,7 +89,6 @@ public static class ConverterCore {
         }
 
         if (((double)count) / taster > threshold) { text = Encoding.Unicode.GetString(b); return Encoding.Unicode; } // (little-endian)
-
 
         // Finally, a long shot - let's see if we can find "charset=xyz" or
         // "encoding=xyz" to identify the encoding:
@@ -121,7 +118,6 @@ public static class ConverterCore {
                 } catch { break; }    // If C# doesn't recognize the name of the encoding, break.
             }
         }
-
 
         // If all else fails, the encoding is probably (though certainly not
         // definitely) the user's local codepage! One might present to the user a
