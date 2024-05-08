@@ -12,8 +12,6 @@ jobs:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: MSBuild
         uses: microsoft/setup-msbuild@v2
         with:
@@ -36,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}.vsix
-          path: EncodingConverter.VisualStudio/bin/Release/**/*.vsix
+          path: EncodingConverter.VisualStudio/bin/Release/*.vsix

@@ -4,6 +4,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <WarningsAsErrors>Nullable</WarningsAsErrors>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <Company>Bluehill</Company>
     <Copyright>Copyright © Bluehill 2024</Copyright>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
