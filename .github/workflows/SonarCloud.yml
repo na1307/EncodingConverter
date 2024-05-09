@@ -42,7 +42,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}\.nuget\packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }} #hash of project files
+          key: ${{ runner.os }}-nuget-${{ hashFiles('Directory.Packages.props') }} #hash of project files
           restore-keys: ${{ runner.os }}-nuget-
       - name: MSBuild
         uses: microsoft/setup-msbuild@v2
@@ -55,5 +55,5 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"na1307_EncodingConverter" /o:"na1307" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          msbuild -r -p:CreateVsixContainer=false -p:DeployExtension=false
+          msbuild -r -p:CreateVsixContainer=false -p:DeployExtension=false -p:RestoreLockedMode=true
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"

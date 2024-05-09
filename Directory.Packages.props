@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Community.VisualStudio.VSCT" Version="16.0.29.6" />
+    <PackageVersion Include="Community.VisualStudio.Toolkit.17" Version="17.0.507" />
+    <PackageVersion Include="Microsoft.VSSDK.BuildTools" Version="17.9.3184" />
+  </ItemGroup>
+</Project>
