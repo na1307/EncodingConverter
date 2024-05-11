@@ -7,6 +7,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "EncodingConverter", "Encodi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncodingConverter.VisualStudio", "EncodingConverter.VisualStudio\EncodingConverter.VisualStudio.csproj", "{9FFBDABA-E149-4EAF-8E0B-F2C5DFC1AFB5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncodingConverter.VisualStudio.V2", "EncodingConverter.VisualStudio.V2\EncodingConverter.VisualStudio.V2.csproj", "{AD3880DF-D634-471B-8F52-607511156A49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{9FFBDABA-E149-4EAF-8E0B-F2C5DFC1AFB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FFBDABA-E149-4EAF-8E0B-F2C5DFC1AFB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FFBDABA-E149-4EAF-8E0B-F2C5DFC1AFB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD3880DF-D634-471B-8F52-607511156A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD3880DF-D634-471B-8F52-607511156A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD3880DF-D634-471B-8F52-607511156A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD3880DF-D634-471B-8F52-607511156A49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -27,5 +33,6 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		EncodingConverter\EncodingConverter.projitems*{6bbcf373-019a-4b1a-9143-b6b529be78a0}*SharedItemsImports = 13
 		EncodingConverter\EncodingConverter.projitems*{9ffbdaba-e149-4eaf-8e0b-f2c5dfc1afb5}*SharedItemsImports = 4
+		EncodingConverter\EncodingConverter.projitems*{ad3880df-d634-471b-8f52-607511156a49}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
