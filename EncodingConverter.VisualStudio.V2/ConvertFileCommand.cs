@@ -1,5 +1,9 @@
-﻿using Microsoft.VisualStudio.Extensibility;
+﻿using EnvDTE;
+using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
+using Microsoft.VisualStudio.Extensibility.VSSdkCompatibility;
+using Microsoft.VisualStudio.Shell;
+using System.IO;
 
 namespace EncodingConverter.VisualStudio;
 
@@ -7,7 +11,7 @@ namespace EncodingConverter.VisualStudio;
 /// ConvertFileCommand handler.
 /// </summary>
 [VisualStudioContribution]
-internal sealed class ConvertFileCommand : Command {
+internal sealed class ConvertFileCommand(AsyncServiceProviderInjection<DTE, DTE> dte) : Microsoft.VisualStudio.Extensibility.Commands.Command {
     [VisualStudioContribution]
     public static CommandGroupConfiguration ConvertFileGroup => new(GroupPlacement.VsctParent(Guid.Parse("{d309f791-903f-11d0-9efc-00a0c911004f}"), 0x0430, 0x0600)) {
         Children = [GroupChild.Command<ConvertFileCommand>()]
@@ -22,6 +26,24 @@ internal sealed class ConvertFileCommand : Command {
 
     /// <inheritdoc />
     public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken) {
+        await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
+        var (result, encoding) = ChooseEncodingDialog.ShowDialogAndGetEncoding();
+
+        if (!result) {
+            return;
+        }
+
+        var dtee = await dte.GetServiceAsync();
+        var items = dtee.SelectedItems.Cast<SelectedItem>().Where(item => {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            item.ProjectItem.Open();
+            return item.ProjectItem.Document.Kind == Constants.vsDocumentKindText;
+        }).Select(item => {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            return new FileInfo((string)item.ProjectItem.Properties.Item("FullPath").Value);
+        });
+
+        await Converter.ConvertEncodingAsync(items, encoding);
     }
 }
