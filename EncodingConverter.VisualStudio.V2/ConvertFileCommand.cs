@@ -11,7 +11,7 @@ namespace EncodingConverter.VisualStudio;
 /// ConvertFileCommand handler.
 /// </summary>
 [VisualStudioContribution]
-internal sealed class ConvertFileCommand(AsyncServiceProviderInjection<DTE, DTE> dte) : Microsoft.VisualStudio.Extensibility.Commands.Command {
+internal sealed class ConvertFileCommand(AsyncServiceProviderInjection<DTE, DTE> dteProvider) : Microsoft.VisualStudio.Extensibility.Commands.Command {
     [VisualStudioContribution]
     public static CommandGroupConfiguration ConvertFileGroup => new(GroupPlacement.VsctParent(Guid.Parse("{d309f791-903f-11d0-9efc-00a0c911004f}"), 0x0430, 0x0600)) {
         Children = [GroupChild.Command<ConvertFileCommand>()]
@@ -34,8 +34,8 @@ internal sealed class ConvertFileCommand(AsyncServiceProviderInjection<DTE, DTE>
             return;
         }
 
-        var dtee = await dte.GetServiceAsync();
-        var items = dtee.SelectedItems.Cast<SelectedItem>().Where(item => {
+        var dte = await dteProvider.GetServiceAsync();
+        var items = dte.SelectedItems.Cast<SelectedItem>().Where(item => {
             ThreadHelper.ThrowIfNotOnUIThread();
             item.ProjectItem.Open();
             return item.ProjectItem.Document.Kind == Constants.vsDocumentKindText;
