@@ -49,6 +49,6 @@ internal sealed class ConvertProjectCommand(AsyncServiceProviderInjection<DTE, D
             return new FileInfo((string)item.Properties.Item("FullPath").Value);
         });
 
-        await Converter.ConvertEncodingAsync(items, encoding);
+        await Converter.ConvertEncodingAsync(items, encoding, context, cancellationToken);
     }
 }

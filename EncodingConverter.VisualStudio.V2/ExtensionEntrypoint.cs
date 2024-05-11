@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.Extensibility;
+using System.Resources;
 
 namespace EncodingConverter.VisualStudio;
 
@@ -11,4 +12,6 @@ internal sealed class ExtensionEntrypoint : Extension {
     public override ExtensionConfiguration ExtensionConfiguration => new() {
         RequiresInProcessHosting = true,
     };
+
+    protected override ResourceManager? ResourceManager => Properties.Resources.ResourceManager;
 }
