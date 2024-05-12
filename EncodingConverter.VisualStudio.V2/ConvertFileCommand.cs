@@ -2,9 +2,9 @@
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Microsoft.VisualStudio.Extensibility.VSSdkCompatibility;
-using Microsoft.VisualStudio.RpcContracts.Notifications;
 using Microsoft.VisualStudio.Shell;
 using System.IO;
+using System.Text;
 
 namespace EncodingConverter.VisualStudio;
 
@@ -12,7 +12,7 @@ namespace EncodingConverter.VisualStudio;
 /// ConvertFileCommand handler.
 /// </summary>
 [VisualStudioContribution]
-internal sealed class ConvertFileCommand(AsyncServiceProviderInjection<DTE, DTE> dteProvider) : Microsoft.VisualStudio.Extensibility.Commands.Command {
+internal sealed class ConvertFileCommand(AsyncServiceProviderInjection<DTE, DTE> dteProvider) : ConvertCommand {
     [VisualStudioContribution]
     public static CommandGroupConfiguration ConvertFileGroup => new(GroupPlacement.VsctParent(Guid.Parse("{d309f791-903f-11d0-9efc-00a0c911004f}"), 0x0430, 0x0600)) {
         Children = [GroupChild.Command<ConvertFileCommand>()]
@@ -25,24 +25,19 @@ internal sealed class ConvertFileCommand(AsyncServiceProviderInjection<DTE, DTE>
         Icon = new(ImageMoniker.KnownValues.FileEncodingDialog, IconSettings.IconAndText),
     };
 
-    /// <inheritdoc />
-    public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken) {
+    protected override async Task ExecuteCommandCoreAsync(Encoding encoding, IClientContext context, CancellationToken cancellationToken) {
         await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
-        ChooseEncodingControl control = new();
+        var dte = await dteProvider.GetServiceAsync();
+        var items = dte.SelectedItems.Cast<SelectedItem>().Where(item => {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            item.ProjectItem.Open();
+            return item.ProjectItem.Document.Kind == Constants.vsDocumentKindText;
+        }).Select(item => {
+            ThreadHelper.ThrowIfNotOnUIThread();
+            return new FileInfo((string)item.ProjectItem.Properties.Item("FullPath").Value);
+        });
 
-        if (await Extensibility.Shell().ShowDialogAsync((WpfControlWrapper)control, "Choose Encoding", DialogOption.OKCancel, cancellationToken) == DialogResult.OK) {
-            var dte = await dteProvider.GetServiceAsync();
-            var items = dte.SelectedItems.Cast<SelectedItem>().Where(item => {
-                ThreadHelper.ThrowIfNotOnUIThread();
-                item.ProjectItem.Open();
-                return item.ProjectItem.Document.Kind == Constants.vsDocumentKindText;
-            }).Select(item => {
-                ThreadHelper.ThrowIfNotOnUIThread();
-                return new FileInfo((string)item.ProjectItem.Properties.Item("FullPath").Value);
-            });
-
-            await Converter.ConvertEncodingAsync(items, control.ChosenEncoding, context, cancellationToken);
-        }
+        await Converter.ConvertEncodingAsync(items, encoding, context, cancellationToken);
     }
 }
