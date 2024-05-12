@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Microsoft.VisualStudio.Extensibility.VSSdkCompatibility;
+using Microsoft.VisualStudio.RpcContracts.Notifications;
 using Microsoft.VisualStudio.Shell;
 using System.IO;
 
@@ -28,22 +29,20 @@ internal sealed class ConvertFileCommand(AsyncServiceProviderInjection<DTE, DTE>
     public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken) {
         await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
-        var (result, encoding) = ChooseEncodingDialog.ShowDialogAndGetEncoding();
+        ChooseEncodingControl control = new();
 
-        if (!result) {
-            return;
+        if (await Extensibility.Shell().ShowDialogAsync((WpfControlWrapper)control, "Choose Encoding", DialogOption.OKCancel, cancellationToken) == DialogResult.OK) {
+            var dte = await dteProvider.GetServiceAsync();
+            var items = dte.SelectedItems.Cast<SelectedItem>().Where(item => {
+                ThreadHelper.ThrowIfNotOnUIThread();
+                item.ProjectItem.Open();
+                return item.ProjectItem.Document.Kind == Constants.vsDocumentKindText;
+            }).Select(item => {
+                ThreadHelper.ThrowIfNotOnUIThread();
+                return new FileInfo((string)item.ProjectItem.Properties.Item("FullPath").Value);
+            });
+
+            await Converter.ConvertEncodingAsync(items, control.ChosenEncoding, context, cancellationToken);
         }
-
-        var dte = await dteProvider.GetServiceAsync();
-        var items = dte.SelectedItems.Cast<SelectedItem>().Where(item => {
-            ThreadHelper.ThrowIfNotOnUIThread();
-            item.ProjectItem.Open();
-            return item.ProjectItem.Document.Kind == Constants.vsDocumentKindText;
-        }).Select(item => {
-            ThreadHelper.ThrowIfNotOnUIThread();
-            return new FileInfo((string)item.ProjectItem.Properties.Item("FullPath").Value);
-        });
-
-        await Converter.ConvertEncodingAsync(items, encoding, context, cancellationToken);
     }
 }
