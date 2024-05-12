@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageLanguagePackManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <DisplayName>Encoding Converter</DisplayName>
+    <Description>여러 파일의 인코딩을 한번에 변환할 수 있습니다.(시스템 인코딩 / UTF-8).</Description>
+  </Metadata>
+</PackageLanguagePackManifest>
