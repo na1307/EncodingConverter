@@ -6,6 +6,9 @@
     <VssdkCompatibleExtension>true</VssdkCompatibleExtension>
     <RootNamespace>EncodingConverter.VisualStudio</RootNamespace>
     <AssemblyName>EncodingConverter.VisualStudio</AssemblyName>
+    <AssemblyVersion>1</AssemblyVersion>
+    <FileVersion>1.900.0</FileVersion>
+    <Version>1.900</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Extensibility.Sdk" />
