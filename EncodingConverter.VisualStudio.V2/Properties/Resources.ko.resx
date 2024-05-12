@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ChooseEncoding" xml:space="preserve">
+    <value>인코딩 선택:</value>
+  </data>
+  <data name="ChooseEncodingTitle" xml:space="preserve">
     <value>인코딩 선택</value>
   </data>
   <data name="OutputText" xml:space="preserve">

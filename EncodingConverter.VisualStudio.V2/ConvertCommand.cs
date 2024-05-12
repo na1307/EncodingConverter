@@ -17,7 +17,7 @@ internal abstract class ConvertCommand(AsyncServiceProviderInjection<SVsStatusba
 
         ChooseEncodingControl control = new();
 
-        if (await Extensibility.Shell().ShowDialogAsync((WpfControlWrapper)control, Resources.ChooseEncoding, DialogOption.OKCancel, cancellationToken) == DialogResult.OK) {
+        if (await Extensibility.Shell().ShowDialogAsync((WpfControlWrapper)control, Resources.ChooseEncodingTitle, DialogOption.OKCancel, cancellationToken) == DialogResult.OK) {
             var items = await GetItemsAsync(cancellationToken);
             var array = items.ToArray();
             var statusbar = await statusbarProvider.GetServiceAsync();

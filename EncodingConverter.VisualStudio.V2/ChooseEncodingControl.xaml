@@ -6,8 +6,11 @@
              xmlns:local="clr-namespace:EncodingConverter.VisualStudio"
              mc:Ignorable="d"
              Height="75" Width="250">
+    <UserControl.Resources>
+        <local:WpfLocalizer x:Key="Loc" />
+    </UserControl.Resources>
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Choose Encoding:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding [ChooseEncoding], Source={StaticResource Loc}}" VerticalAlignment="Top"/>
         <ComboBox x:Name="encodingsCombo" HorizontalAlignment="Center" Margin="0,31,0,0" VerticalAlignment="Top" Width="230"/>
     </Grid>
 </UserControl>
