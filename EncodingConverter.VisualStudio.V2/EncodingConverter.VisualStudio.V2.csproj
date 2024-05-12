@@ -5,6 +5,12 @@
     <UseWPF>true</UseWPF>
     <VssdkCompatibleExtension>true</VssdkCompatibleExtension>
     <DeployExtension>true</DeployExtension>
+    <AssemblyTitle>Encoding Converter</AssemblyTitle>
+    <Description>Encoding Converter</Description>
+    <Product>Encoding Converter</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.900.0</FileVersion>
+    <Version>1.900</Version>
     <RootNamespace>EncodingConverter.VisualStudio</RootNamespace>
     <AssemblyName>EncodingConverter.VisualStudio</AssemblyName>
   </PropertyGroup>
