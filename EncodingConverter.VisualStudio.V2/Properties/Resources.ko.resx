@@ -118,24 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ChooseEncoding" xml:space="preserve">
-    <value>Choose Encoding</value>
+    <value>인코딩 선택</value>
   </data>
   <data name="OutputText" xml:space="preserve">
-    <value>Encoding Converter: {0} processed ({1}/{2})</value>
-  </data>
-  <data name="OWString" xml:space="preserve">
-    <value>Encoding Converter</value>
+    <value>Encoding Converter: {0} 처리됨 ({1}/{2})</value>
   </data>
   <data name="StatusbarText" xml:space="preserve">
-    <value>{0}/{1} file processed</value>
+    <value>{0}/{1} 파일 처리됨</value>
   </data>
   <data name="SystemEncoding" xml:space="preserve">
-    <value>System Encoding</value>
+    <value>시스템 인코딩</value>
   </data>
   <data name="Utf8WithBom" xml:space="preserve">
-    <value>UTF-8 with BOM</value>
+    <value>UTF-8 (BOM)</value>
   </data>
   <data name="Utf8WithoutBom" xml:space="preserve">
-    <value>UTF-8 without BOM</value>
+    <value>UTF-8</value>
   </data>
 </root>

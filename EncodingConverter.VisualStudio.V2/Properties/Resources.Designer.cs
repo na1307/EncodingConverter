@@ -61,11 +61,65 @@ namespace EncodingConverter.VisualStudio.Properties {
         }
         
         /// <summary>
+        ///   Choose Encoding과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string ChooseEncoding {
+            get {
+                return ResourceManager.GetString("ChooseEncoding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Encoding Converter: {0} processed ({1}/{2})과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string OutputText {
+            get {
+                return ResourceManager.GetString("OutputText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Encoding Converter과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string OWString {
             get {
                 return ResourceManager.GetString("OWString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0}/{1} file processed과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string StatusbarText {
+            get {
+                return ResourceManager.GetString("StatusbarText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System Encoding과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SystemEncoding {
+            get {
+                return ResourceManager.GetString("SystemEncoding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   UTF-8 with BOM과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Utf8WithBom {
+            get {
+                return ResourceManager.GetString("Utf8WithBom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   UTF-8 without BOM과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Utf8WithoutBom {
+            get {
+                return ResourceManager.GetString("Utf8WithoutBom", resourceCulture);
             }
         }
     }
