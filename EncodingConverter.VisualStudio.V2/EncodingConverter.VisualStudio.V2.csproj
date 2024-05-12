@@ -4,6 +4,7 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <UseWPF>true</UseWPF>
     <VssdkCompatibleExtension>true</VssdkCompatibleExtension>
+    <DeployExtension>true</DeployExtension>
     <RootNamespace>EncodingConverter.VisualStudio</RootNamespace>
     <AssemblyName>EncodingConverter.VisualStudio</AssemblyName>
     <AssemblyVersion>1</AssemblyVersion>
@@ -14,6 +15,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Extensibility.Sdk" />
     <PackageReference Include="Microsoft.VisualStudio.Extensibility.Build" />
     <PackageReference Include="Microsoft.VisualStudio.SDK" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" ExcludeAssets="analyzers" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\LICENSE.txt">
