@@ -28,6 +28,7 @@ public static class ConverterCore {
     // later on may appear to be ASCII initially). If taster = 0, then taster
     // becomes the length of the file (for maximum reliability). 'text' is simply
     // the string with the discovered encoding applied to the file.
+#pragma warning disable
     private static Encoding detectTextEncoding(string filename, out string text, int taster = 1000) {
         var b = File.ReadAllBytes(filename);
 
@@ -126,4 +127,5 @@ public static class ConverterCore {
         text = Encoding.Default.GetString(b);
         return Encoding.Default;
     }
+#pragma warning restore
 }
