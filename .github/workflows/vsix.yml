@@ -28,7 +28,7 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('Directory.Packages.props') }} #hash of project files
           restore-keys: ${{ runner.os }}-nuget-
       - name: Build
-        run: msbuild EncodingConverter.VisualStudio\EncodingConverter.VisualStudio.csproj -r -p:Configuration=Release -p:DeployExtension=false -p:RestoreLockedMode=true
+        run: msbuild EncodingConverter.VisualStudio\EncodingConverter.VisualStudio.csproj -r -p:Configuration=Release -p:DeployExtension=false
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
