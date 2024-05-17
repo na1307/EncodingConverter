@@ -9,6 +9,6 @@
     <PackageVersion Include="Microsoft.VSSDK.BuildTools" Version="17.9.3184" />
   </ItemGroup>
   <ItemGroup>
-    <GlobalPackageReference Include="Bluehill.Imports" Version="1.0.3" />
+    <GlobalPackageReference Include="Bluehill.Imports" Version="1.0.4" />
   </ItemGroup>
 </Project>
