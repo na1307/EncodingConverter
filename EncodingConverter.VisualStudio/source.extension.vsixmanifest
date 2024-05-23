@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="EncodingConverter.625f3018-1e5f-4b92-ad9c-08d2534b6021" Version="1.910" Language="en-US" Publisher="Bluehill" />
+    <Identity Id="EncodingConverter.625f3018-1e5f-4b92-ad9c-08d2534b6021" Version="2.0" Language="en-US" Publisher="Bluehill" />
     <DisplayName>Encoding Converter</DisplayName>
     <Description>An extension that allows you to easily convert the encoding of multiple files(System Encoding / UTF-8 with / without BOM).</Description>
     <License>LICENSE.txt</License>
@@ -11,10 +11,10 @@
     <Preview>true</Preview>
   </Metadata>
   <Installation ExtensionType="VSSDK+VisualStudio.Extensibility">
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.9, 18.0)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.10, 18.0)">
       <ProductArchitecture>amd64</ProductArchitecture>
     </InstallationTarget>
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.9, 18.0)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.10, 18.0)">
       <ProductArchitecture>arm64</ProductArchitecture>
     </InstallationTarget>
   </Installation>
