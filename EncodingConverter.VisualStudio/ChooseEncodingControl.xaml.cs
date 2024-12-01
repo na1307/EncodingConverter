@@ -5,7 +5,7 @@ namespace EncodingConverter.VisualStudio;
 /// <summary>
 /// ChooseEncodingControl.xaml에 대한 상호 작용 논리
 /// </summary>
-public partial class ChooseEncodingControl {
+public sealed partial class ChooseEncodingControl {
     private static readonly string[] encodings = [Properties.Resources.SystemEncoding, Properties.Resources.Utf8WithBom, Properties.Resources.Utf8WithoutBom];
     private static readonly UTF8Encoding utf8withBom = new(encoderShouldEmitUTF8Identifier: true);
     private static readonly UTF8Encoding utf8withoutBom = new(encoderShouldEmitUTF8Identifier: false);

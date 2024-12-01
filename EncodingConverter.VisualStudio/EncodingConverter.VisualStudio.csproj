@@ -17,7 +17,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Extensibility.Sdk" />
     <PackageReference Include="Microsoft.VisualStudio.Extensibility.Build" />
     <PackageReference Include="Microsoft.VisualStudio.SDK" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" ExcludeAssets="analyzers" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\LICENSE.txt">

@@ -126,9 +126,6 @@
   <data name="OutputText" xml:space="preserve">
     <value>Encoding Converter: {0} processed ({1}/{2})</value>
   </data>
-  <data name="OWString" xml:space="preserve">
-    <value>Encoding Converter</value>
-  </data>
   <data name="StatusbarText" xml:space="preserve">
     <value>{0}/{1} file processed</value>
   </data>

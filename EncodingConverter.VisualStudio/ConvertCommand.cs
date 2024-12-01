@@ -25,7 +25,7 @@ internal abstract class ConvertCommand(AsyncServiceProviderInjection<SVsStatusba
             uint cookie = 0;
 
             // Initialize the progress bar
-            statusbar.Progress(ref cookie, 1, "", 0, 0);
+            statusbar.Progress(ref cookie, 1, string.Empty, 0, 0);
 
             for (var i = 0; i < array.Length; i++) {
                 var file = array[i];
@@ -43,14 +43,14 @@ internal abstract class ConvertCommand(AsyncServiceProviderInjection<SVsStatusba
 
 #pragma warning disable VSEXTPREVIEW_OUTPUTWINDOW // 형식은 평가 목적으로 제공되며, 이후 업데이트에서 변경되거나 제거될 수 있습니다. 계속하려면 이 진단을 표시하지 않습니다.
                 // Print to Output window
-                var channel = await context.Extensibility.Views().Output.GetChannelAsync("Encoding Converter", nameof(Resources.OWString), cancellationToken);
+                var channel = await context.Extensibility.Views().Output.CreateOutputChannelAsync("Encoding Converter", cancellationToken);
 
-                await channel.Writer.WriteLineAsync(string.Format(Resources.OutputText, file.Name, i + 1, array.Length));
+                await channel.WriteLineAsync(string.Format(Resources.OutputText, file.Name, i + 1, array.Length));
 #pragma warning restore VSEXTPREVIEW_OUTPUTWINDOW // 형식은 평가 목적으로 제공되며, 이후 업데이트에서 변경되거나 제거될 수 있습니다. 계속하려면 이 진단을 표시하지 않습니다.
             }
 
             // Clear the progress bar
-            statusbar.Progress(ref cookie, 0, "", 0, 0);
+            statusbar.Progress(ref cookie, 0, string.Empty, 0, 0);
         }
     }
 

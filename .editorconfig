@@ -232,10 +232,6 @@ dotnet_diagnostic.CA1001.severity = warning
 dotnet_diagnostic.CA1003.severity = warning
 dotnet_code_quality.CA1003.api_surface = all
 
-# Enums should have zero value
-dotnet_diagnostic.CA1008.severity = warning
-dotnet_code_quality.CA1008.api_surface = all
-
 # Collections should implement generic interface
 dotnet_diagnostic.CA1010.severity = warning
 dotnet_code_quality.CA1010.api_surface = all
@@ -254,9 +250,6 @@ dotnet_code_quality.CA1028.api_surface = all
 # Use events where appropriate
 dotnet_diagnostic.CA1030.severity = warning
 dotnet_code_quality.CA1030.api_surface = all
-
-# Do not catch general exception types
-dotnet_diagnostic.CA1031.severity = warning
 
 # Implement standard exception constructors
 dotnet_diagnostic.CA1032.severity = warning
@@ -361,9 +354,6 @@ dotnet_code_quality.CA1720.api_surface = all
 # Property names should not match get methods
 dotnet_diagnostic.CA1721.severity = warning
 dotnet_code_quality.CA1721.api_surface = all
-
-# Type names should not match namespacess
-dotnet_diagnostic.CA1724.severity = warning
 
 # Use Literals Where Appropriate
 dotnet_diagnostic.CA1802.severity = warning
@@ -742,7 +732,7 @@ tab_width = 4
 
 # 새 줄 기본 설정
 end_of_line = crlf
-insert_final_newline = false
+insert_final_newline = true
 
 #### .NET 코딩 규칙 ####
 

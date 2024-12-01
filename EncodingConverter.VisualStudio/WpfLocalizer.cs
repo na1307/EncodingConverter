@@ -3,7 +3,6 @@
 namespace EncodingConverter.VisualStudio;
 
 public sealed class WpfLocalizer {
-
     public string? this[string id] {
         get {
             if (string.IsNullOrWhiteSpace(id)) {
