@@ -1,15 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-  </PropertyGroup>
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <UseWPF>true</UseWPF>
     <VssdkCompatibleExtension>true</VssdkCompatibleExtension>
     <DeployExtension>true</DeployExtension>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <RestoreLockedMode Condition="'$(ContinuousIntegrationBuild)' == 'true'">true</RestoreLockedMode>
     <AssemblyName>EncodingConverter</AssemblyName>
     <AssemblyTitle>Encoding Converter</AssemblyTitle>
     <Description>Encoding Converter</Description>
