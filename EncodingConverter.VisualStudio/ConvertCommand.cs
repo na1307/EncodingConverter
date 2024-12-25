@@ -1,16 +1,19 @@
-﻿using EncodingConverter.VisualStudio.Properties;
+﻿global using DSPI = Microsoft.VisualStudio.Extensibility.VSSdkCompatibility.AsyncServiceProviderInjection<EnvDTE.DTE, EnvDTE.DTE>;
+global using SSPI = Microsoft.VisualStudio.Extensibility.VSSdkCompatibility.AsyncServiceProviderInjection<Microsoft.VisualStudio.Shell.Interop.SVsStatusbar, Microsoft.VisualStudio.Shell.Interop.IVsStatusbar>;
+using EncodingConverter.VisualStudio.Properties;
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Microsoft.VisualStudio.Extensibility.VSSdkCompatibility;
 using Microsoft.VisualStudio.RpcContracts.Notifications;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
 using System.IO;
 
 namespace EncodingConverter.VisualStudio;
 
 [VisualStudioContribution]
-internal abstract class ConvertCommand(AsyncServiceProviderInjection<SVsStatusbar, IVsStatusbar> statusbarProvider) : Command {
+internal abstract class ConvertCommand(SSPI statusbarProvider) : Command {
+    protected const string parentGuid = "{d309f791-903f-11d0-9efc-00a0c911004f}";
+
     /// <inheritdoc />
     public sealed override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken) {
         await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);

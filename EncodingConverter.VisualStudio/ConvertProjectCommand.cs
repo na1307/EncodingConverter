@@ -1,9 +1,7 @@
 ﻿using EnvDTE;
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
-using Microsoft.VisualStudio.Extensibility.VSSdkCompatibility;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
 using System.IO;
 
 namespace EncodingConverter.VisualStudio;
@@ -12,12 +10,9 @@ namespace EncodingConverter.VisualStudio;
 /// ConvertProjectCommand handler.
 /// </summary>
 [VisualStudioContribution]
-internal sealed class ConvertProjectCommand(
-    AsyncServiceProviderInjection<SVsStatusbar, IVsStatusbar> statusbarProvider,
-    AsyncServiceProviderInjection<DTE, DTE> dteProvider
-    ) : ConvertCommand(statusbarProvider) {
+internal sealed class ConvertProjectCommand(SSPI statusbarProvider, DSPI dteProvider) : ConvertCommand(statusbarProvider) {
     [VisualStudioContribution]
-    public static CommandGroupConfiguration ConvertProjectGroup => new(GroupPlacement.VsctParent(Guid.Parse("{d309f791-903f-11d0-9efc-00a0c911004f}"), 0x0402, 0x0600)) {
+    public static CommandGroupConfiguration ConvertProjectGroup => new(GroupPlacement.VsctParent(Guid.Parse(parentGuid), 0x0402, 0x0600)) {
         Children = [GroupChild.Command<ConvertProjectCommand>()]
     };
 
@@ -40,7 +35,7 @@ internal sealed class ConvertProjectCommand(
             }
 
             item.Open();
-            return item.Document.Kind == EnvDTE.Constants.vsDocumentKindText;
+            return item.Document.Kind == Constants.vsDocumentKindText;
         }).Select(item => {
             ThreadHelper.ThrowIfNotOnUIThread();
             return new FileInfo((string)item.Properties.Item("FullPath").Value);
