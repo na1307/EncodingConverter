@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncodingConverter", "EncodingConverter\EncodingConverter.csproj", "{E283D6C4-FFC8-4BFE-9E58-8F165AE1B455}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncodingConverter.Tests", "EncodingConverter.Tests\EncodingConverter.Tests.csproj", "{1EBE4E9F-A7AA-457B-B619-ADA0A1E16C70}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncodingConverter.VisualStudio", "EncodingConverter.VisualStudio\EncodingConverter.VisualStudio.csproj", "{AD3880DF-D634-471B-8F52-607511156A49}"
 EndProject
 Global
@@ -17,6 +19,10 @@ Global
 		{E283D6C4-FFC8-4BFE-9E58-8F165AE1B455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E283D6C4-FFC8-4BFE-9E58-8F165AE1B455}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E283D6C4-FFC8-4BFE-9E58-8F165AE1B455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EBE4E9F-A7AA-457B-B619-ADA0A1E16C70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EBE4E9F-A7AA-457B-B619-ADA0A1E16C70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EBE4E9F-A7AA-457B-B619-ADA0A1E16C70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EBE4E9F-A7AA-457B-B619-ADA0A1E16C70}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AD3880DF-D634-471B-8F52-607511156A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD3880DF-D634-471B-8F52-607511156A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD3880DF-D634-471B-8F52-607511156A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
