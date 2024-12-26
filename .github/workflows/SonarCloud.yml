@@ -4,20 +4,46 @@ on:
   push:
     branches:
       - main
-  pull_request:
+  pull_request_target:
     branches:
       - main
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
-  build:
+  sonarcloud:
     name: SonarCloud
     runs-on: windows-latest
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
+      - name: Check if PR
+        shell: bash
+        run: echo "PR=${{ github.event_name == 'pull_request_target' }}" >> $GITHUB_ENV
+      - name: Check Modified Files
+        id: check-files
+        if: env.PR == 'true'
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            github:
+              - '.github/**'
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Exit if unsafe PR
+        if: env.PR == 'true' && steps.check-files.outputs.github == 'true'
+        run: |
+          echo "Unsafe PR detected: Modifications to .github/ files are not allowed."
+          exit 1
+      - name: Checkout PR head if safe
+        if: env.PR == 'true' && steps.check-files.outputs.github == 'false'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
       - name: Set up JDK 21
         uses: actions/setup-java@v4
