@@ -30,3 +30,16 @@ updates:
       separator: _
     reviewers:
       - na1307
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+      time: "12:00"
+      timezone: Asia/Seoul
+    assignees:
+      - na1307
+    pull-request-branch-name:
+      separator: _
+    reviewers:
+      - na1307

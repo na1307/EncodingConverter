@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <Product>Encoding Converter</Product>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+</Project>

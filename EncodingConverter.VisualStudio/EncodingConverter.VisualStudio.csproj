@@ -7,7 +7,6 @@
     <DeployExtension>true</DeployExtension>
     <AssemblyName>EncodingConverter</AssemblyName>
     <AssemblyTitle>Encoding Converter for Visual Studio</AssemblyTitle>
-    <Product>Encoding Converter</Product>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <FileVersion>2.0.0</FileVersion>
     <Version>2.0</Version>
