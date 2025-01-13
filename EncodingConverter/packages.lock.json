@@ -4,11 +4,11 @@
     ".NETStandard,Version=v2.0": {
       "Bluehill.Imports": {
         "type": "Direct",
-        "requested": "[1.0.9, )",
-        "resolved": "1.0.9",
-        "contentHash": "r3ePwQMhwbAPM86ScTTcSZ2bq/DM8MkCnyYEY0biz5CXB5Enu/Mmf5hVZMd+/lZeOwPFQq3hNAm/dg0bDFpHmA==",
+        "requested": "[1.0.11, )",
+        "resolved": "1.0.11",
+        "contentHash": "fh54FR1Ax9eC87diV3EDtptWeIvQittYEzoleVx69jPHvgpVngHh6nMPxuubiCc8SFW5bdpg1zzOHQue2Gg0kg==",
         "dependencies": {
-          "Bluehill.Analyzers": "1.2.0",
+          "Bluehill.Analyzers": "1.4.0",
           "Roslynator.Analyzers": "4.12.10",
           "Roslynator.Formatting.Analyzers": "4.12.10"
         }
@@ -24,8 +24,8 @@
       },
       "Bluehill.Analyzers": {
         "type": "Transitive",
-        "resolved": "1.2.0",
-        "contentHash": "vsLjAh+2Fv7Yij7sqFvkFxf5lRv4R+FqbRIl8CGCiNSzxFywisYIeueJiQp5wp7nvYunJy9bJ0YS0EH6PbEKJQ=="
+        "resolved": "1.4.0",
+        "contentHash": "uo+9s0ex8bP1QmdPiQKgliiznkbteqM+XWBGFDexNsOaDEQ+YT9GhGCn5qvfr2c5xLscop6kgPBZGSROeG3Xcw=="
       },
       "Microsoft.NETCore.Platforms": {
         "type": "Transitive",
