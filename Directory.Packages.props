@@ -5,13 +5,13 @@
     <CentralPackageVersionOverrideEnabled>false</CentralPackageVersionOverrideEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-    <PackageVersion Include="Microsoft.VisualStudio.Extensibility.Sdk" Version="17.12.40390" />
-    <PackageVersion Include="Microsoft.VisualStudio.Extensibility.Build" Version="17.12.40390" />
-    <PackageVersion Include="Microsoft.VisualStudio.SDK" Version="17.12.40392" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageVersion Include="Microsoft.VisualStudio.Extensibility.Sdk" Version="17.13.40008" />
+    <PackageVersion Include="Microsoft.VisualStudio.Extensibility.Build" Version="17.13.40008" />
+    <PackageVersion Include="Microsoft.VisualStudio.SDK" Version="17.13.40008" />
     <PackageVersion Include="Microsoft.VSSDK.BuildTools" Version="17.12.2069" />
-    <PackageVersion Include="xunit.v3" Version="1.0.0" />
-    <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.0" />
+    <PackageVersion Include="xunit.v3" Version="2.0.0" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.2" />
   </ItemGroup>
   <ItemGroup>
     <GlobalPackageReference Include="Bluehill.Imports" Version="1.0.9" />
