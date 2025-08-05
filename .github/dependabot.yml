@@ -1,21 +1,21 @@
 version: 2
 updates:
-  - package-ecosystem: nuget
-    directory: /
-    schedule:
-      interval: daily
-      time: "18:00"
-      timezone: Asia/Seoul
-    assignees:
-      - na1307
-    pull-request-branch-name:
-      separator: _
-    reviewers:
-      - na1307
-    groups:
-      default:
-        patterns:
-          - "*"
+  # - package-ecosystem: nuget
+  #   directory: /
+  #   schedule:
+  #     interval: daily
+  #     time: "18:00"
+  #     timezone: Asia/Seoul
+  #   assignees:
+  #     - na1307
+  #   pull-request-branch-name:
+  #     separator: _
+  #   reviewers:
+  #     - na1307
+  #   groups:
+  #     default:
+  #       patterns:
+  #         - "*"
 
   - package-ecosystem: dotnet-sdk
     directory: /
