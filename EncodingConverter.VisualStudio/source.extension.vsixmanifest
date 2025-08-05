@@ -11,10 +11,10 @@
     <Preview>true</Preview>
   </Metadata>
   <Installation ExtensionType="VSSDK+VisualStudio.Extensibility">
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.12, 18.0)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14, 18.0)">
       <ProductArchitecture>amd64</ProductArchitecture>
     </InstallationTarget>
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.12, 18.0)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14, 18.0)">
       <ProductArchitecture>arm64</ProductArchitecture>
     </InstallationTarget>
   </Installation>

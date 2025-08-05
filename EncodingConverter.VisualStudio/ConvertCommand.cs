@@ -1,4 +1,5 @@
-﻿global using DSPI = Microsoft.VisualStudio.Extensibility.VSSdkCompatibility.AsyncServiceProviderInjection<EnvDTE.DTE, EnvDTE.DTE>;
+﻿#pragma warning disable SA1209
+global using DSPI = Microsoft.VisualStudio.Extensibility.VSSdkCompatibility.AsyncServiceProviderInjection<EnvDTE.DTE, EnvDTE.DTE>;
 global using SSPI = Microsoft.VisualStudio.Extensibility.VSSdkCompatibility.AsyncServiceProviderInjection<Microsoft.VisualStudio.Shell.Interop.SVsStatusbar, Microsoft.VisualStudio.Shell.Interop.IVsStatusbar>;
 using EncodingConverter.VisualStudio.Properties;
 using Microsoft.VisualStudio.Extensibility;
@@ -12,7 +13,7 @@ namespace EncodingConverter.VisualStudio;
 
 [VisualStudioContribution]
 internal abstract class ConvertCommand(SSPI statusbarProvider) : Command {
-    protected const string parentGuid = "{d309f791-903f-11d0-9efc-00a0c911004f}";
+    protected const string ParentGuid = "{d309f791-903f-11d0-9efc-00a0c911004f}";
 
     /// <inheritdoc />
     public sealed override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken) {

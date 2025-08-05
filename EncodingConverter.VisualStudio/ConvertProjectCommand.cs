@@ -12,7 +12,7 @@ namespace EncodingConverter.VisualStudio;
 [VisualStudioContribution]
 internal sealed class ConvertProjectCommand(SSPI statusbarProvider, DSPI dteProvider) : ConvertCommand(statusbarProvider) {
     [VisualStudioContribution]
-    public static CommandGroupConfiguration ConvertProjectGroup => new(GroupPlacement.VsctParent(Guid.Parse(parentGuid), 0x0402, 0x0600)) {
+    public static CommandGroupConfiguration ConvertProjectGroup => new(GroupPlacement.VsctParent(Guid.Parse(ParentGuid), 0x0402, 0x0600)) {
         Children = [GroupChild.Command<ConvertProjectCommand>()]
     };
 
@@ -25,6 +25,7 @@ internal sealed class ConvertProjectCommand(SSPI statusbarProvider, DSPI dteProv
 
     protected override async Task<IEnumerable<FileInfo>> GetItemsAsync(CancellationToken cancellationToken) {
         await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
         var dte = await dteProvider.GetServiceAsync();
 
         return dte.SelectedItems.Item(1).Project.ProjectItems.Cast<ProjectItem>().Where(item => {

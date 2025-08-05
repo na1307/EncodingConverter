@@ -12,7 +12,7 @@ namespace EncodingConverter.VisualStudio;
 [VisualStudioContribution]
 internal sealed class ConvertFileCommand(SSPI statusbarProvider, DSPI dteProvider) : ConvertCommand(statusbarProvider) {
     [VisualStudioContribution]
-    public static CommandGroupConfiguration ConvertFileGroup => new(GroupPlacement.VsctParent(Guid.Parse(parentGuid), 0x0430, 0x0600)) {
+    public static CommandGroupConfiguration ConvertFileGroup => new(GroupPlacement.VsctParent(Guid.Parse(ParentGuid), 0x0430, 0x0600)) {
         Children = [GroupChild.Command<ConvertFileCommand>()]
     };
 
@@ -25,6 +25,7 @@ internal sealed class ConvertFileCommand(SSPI statusbarProvider, DSPI dteProvide
 
     protected override async Task<IEnumerable<FileInfo>> GetItemsAsync(CancellationToken cancellationToken) {
         await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
         var dte = await dteProvider.GetServiceAsync();
 
         return dte.SelectedItems.Cast<SelectedItem>().Where(item => {
