@@ -4,9 +4,9 @@
     ".NETStandard,Version=v2.0": {
       "Bluehill.Imports": {
         "type": "Direct",
-        "requested": "[1.0.18, )",
-        "resolved": "1.0.18",
-        "contentHash": "fWhujjK+WgnUaPk8krP1J9uzR5RtupYzG2a01FDj26rDGWBRbbRtc05N9DkG2WcdAzaxcjgOhvQA3plzNYoP7A==",
+        "requested": "[1.0.19, )",
+        "resolved": "1.0.19",
+        "contentHash": "QTaBh2Nj9XcjYBee1/HpM7ZQTOPXs4AjASMoQ+momgQf7lUm8uMwNt9WgzdBHvxSJI/1S/N8Kh5mub6FhTFQog==",
         "dependencies": {
           "Bluehill.Analyzers": "1.8.1",
           "Roslynator.Analyzers": "4.14.0",
