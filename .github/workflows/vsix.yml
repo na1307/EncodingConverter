@@ -11,7 +11,9 @@ jobs:
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
       - name: MSBuild
         uses: microsoft/setup-msbuild@v2
         with:
@@ -30,7 +32,7 @@ jobs:
       - name: Build
         run: msbuild EncodingConverter.VisualStudio\EncodingConverter.VisualStudio.csproj -r -p:Configuration=Release -p:DeployExtension=false
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
-          name: ${{ github.event.repository.name }}.vsix
+          name: vsix
           path: EncodingConverter.VisualStudio/bin/Release/*.vsix

@@ -28,6 +28,7 @@
 *.targets text eol=crlf
 *.pubxml text eol=crlf
 *.sln text eol=crlf
+*.slnx text eol=crlf
 *.bas text eol=crlf
 *.cls text eol=crlf
 *.frm text eol=crlf
@@ -37,4 +38,5 @@
 *.cmd text eol=crlf
 *.manifest text eol=crlf
 *.config text eol=crlf
+*.vsixmanifest text eol=crlf
 Directory.Packages.props text eol=lf
